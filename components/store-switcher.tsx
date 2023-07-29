@@ -66,7 +66,7 @@ export default function StoreSwitcher({
                             ))}
                         </CommandGroup>
                     </CommandList>
-                    <CommandSeparator>
+                    <CommandSeparator />
                         <CommandList>
                             <CommandGroup>
                                 <CommandItem
@@ -76,10 +76,10 @@ export default function StoreSwitcher({
                                     }}
                                 >
                                     <PlusCircle className="mr-2 h-5 w-5"/>
+                                    Create Store
                                 </CommandItem>
                             </CommandGroup>
                         </CommandList>
-                    </CommandSeparator>
                 </Command>
 
             </PopoverContent>
