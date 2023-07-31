@@ -15,8 +15,6 @@ import { Input } from "@/components/ui/input";
 import toast from "react-hot-toast";
 import { useParams, useRouter } from "next/navigation";
 import { AlertModal } from "@/components/modals/alert-modal";
-import { ApiAlert } from "@/components/ui/api-alert";
-import { useOrigin } from "@/hooks/use-origin";
 import ImageUpload from "@/components/ui/image-upload";
 
 const formSchema = z.object({
@@ -43,8 +41,6 @@ const BillboardForm: React.FunctionComponent<BillboardFormProps> = ({
 
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
-
-    const origin = useOrigin();
 
     const title = initialData ? "Edit billboard" : "Create billboard";
     const description = initialData ? "Edit a billboard" : "Add a new billboard";
@@ -86,7 +82,7 @@ const BillboardForm: React.FunctionComponent<BillboardFormProps> = ({
             setLoading(true);
             await axios.delete(`/api/${params.storeId}/billboards/${params.billboardId}`);
             router.refresh();
-            router.push("/");          
+            router.push(`/${params.storeId}/billboards`);          
             toast.success("store deleted successfully");
         } catch (error) {
             toast.error("make sure you remove all categories using this bilboard");
@@ -165,7 +161,6 @@ const BillboardForm: React.FunctionComponent<BillboardFormProps> = ({
                 </form>
 
             </Form>
-            <Separator/>
         </>
      );
 }
